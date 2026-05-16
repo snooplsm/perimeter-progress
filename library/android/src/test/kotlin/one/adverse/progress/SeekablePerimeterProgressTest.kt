@@ -47,6 +47,7 @@ class SeekablePerimeterProgressTest {
     fun nearEdgeMatchesOnlyTheConfiguredPerimeterSlop() {
         val size = IntSize(width = 300, height = 500)
 
+        assertTrue(isNearPerimeterEdge(Offset(24f, 250f), size, edgeSlopPx = 24f))
         assertTrue(isNearPerimeterEdge(Offset(10f, 250f), size, edgeSlopPx = 24f))
         assertTrue(isNearPerimeterEdge(Offset(290f, 250f), size, edgeSlopPx = 24f))
         assertTrue(isNearPerimeterEdge(Offset(150f, 10f), size, edgeSlopPx = 24f))
@@ -94,5 +95,18 @@ class SeekablePerimeterProgressTest {
         )
 
         assertTrue(progress in 0f..1f)
+    }
+
+    @Test
+    fun progressForTapReturnsZeroForEmptySize() {
+        val progress = seekablePerimeterProgressForTap(
+            size = IntSize.Zero,
+            tap = Offset.Zero,
+            strokePx = 10f,
+            cornerRadiusPx = 44f,
+            perimeterStart = 0.66f
+        )
+
+        assertEquals(0f, progress, 0.0001f)
     }
 }

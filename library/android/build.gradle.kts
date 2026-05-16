@@ -30,6 +30,12 @@ android {
         compose = true
     }
 
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+
     publishing {
         singleVariant("release") {
             withSourcesJar()
@@ -43,6 +49,8 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.16")
+    testImplementation("androidx.compose.ui:ui-test-junit4:1.10.4")
+    testImplementation("androidx.compose.ui:ui-test-manifest:1.10.4")
 }
 
 publishing {
