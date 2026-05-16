@@ -17,8 +17,6 @@ Options:
   --force-tag     Move an existing local/remote tag to the release commit.
   -h, --help      Show this help.
 
-The script expects SIGNING_KEY, SIGNING_PASSWORD, and Central Portal credentials
-to be available after loading ~/.zshrc with `zsh -ic`.
 USAGE
 }
 
